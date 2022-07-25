@@ -6,7 +6,8 @@ const printFooter = () => {
 
     footer.appendChild(cr);
 
-    return footer;
+    const content = document.querySelector('#content');
+    content.appendChild(footer);
 }
 
 export { printFooter };

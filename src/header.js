@@ -1,3 +1,9 @@
+import { pageRemover } from "./pageRemover";
+import { printHome } from "./home";
+import { printMenu } from "./menu";
+import { printContacts } from "./contacts";
+import { printFooter } from "./footer";
+
 const printHeader = () => {
     const header = document.createElement('header');
 
@@ -8,16 +14,34 @@ const printHeader = () => {
     const nav = document.createElement('nav');
 
     const btnHome = document.createElement('div');
-    btnHome.classList.add('btnHome');
+    btnHome.id = 'btnHome';
+    btnHome.classList.add('navButton');
     btnHome.innerText = 'Home';
+    btnHome.onclick = () => {console.log('home');
+        pageRemover();
+        printHome();
+        printFooter();
+    };
 
     const btnMenu = document.createElement('div');
-    btnMenu.classList.add('btnMenu');
+    btnMenu.id = 'btnMenu';
+    btnMenu.classList.add('navButton');
     btnMenu.innerText = 'Menu';
+    btnMenu.onclick = () => {console.log('menu');
+        pageRemover();
+        printMenu();
+        printFooter();
+    };
 
     const btnContacts = document.createElement('div');
-    btnContacts.classList.add('btnContacts');
+    btnContacts.id = 'btnContacts';
+    btnContacts.classList.add('navButton');
     btnContacts.innerText = 'Contacts';
+    btnContacts.onclick = () => {console.log('contacts');
+        pageRemover();
+        printContacts();
+        printFooter();
+    };
 
     nav.appendChild(btnHome);
     nav.appendChild(btnMenu);
@@ -26,7 +50,8 @@ const printHeader = () => {
     header.appendChild(logo);
     header.appendChild(nav);
 
-    return header;
+    const content = document.querySelector('#content');
+    content.appendChild(header);
 }
 
 export { printHeader };

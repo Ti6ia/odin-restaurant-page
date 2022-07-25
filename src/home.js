@@ -1,4 +1,7 @@
 import Pastona from './pastone.jpg';
+import { pageRemover } from './pageRemover';
+import { printContacts } from './contacts';
+import { printFooter } from './footer';
 
 const printHome = () => {
     const home = document.createElement('main');
@@ -12,6 +15,12 @@ const printHome = () => {
 
     const text2 = document.createElement('h2');
     text2.innerText = 'Come to visit us!!';
+    text2.id = 'text2';
+    text2.onclick = () => {
+        pageRemover();
+        printContacts();
+        printFooter();
+    };
 
     const pastone = new Image();
     pastone.src = Pastona;
@@ -21,7 +30,8 @@ const printHome = () => {
     home.appendChild(pastone);
     home.appendChild(text2);
 
-    return home;
+    const content = document.querySelector('#content');
+    content.appendChild(home);
 }
 
 export { printHome };
